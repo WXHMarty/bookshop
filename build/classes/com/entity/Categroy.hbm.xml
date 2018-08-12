@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.entity.Categroy" table="categroy">
+    	<id name="cid" column="cid" type="java.lang.Integer">
+    		<generator class="increment"/>
+    	</id>
+    	<property name="cname" type="java.lang.String">
+    		<column name="cname" length="50" not-null="true"/>
+    	</property>
+		<property name="cvalue" type="java.lang.String">
+			<column name="cvalue" length="100" not-null="true"/>
+		</property>
+		<property name="gradeid" type="java.lang.Integer">
+			<column name="gradeid" length="50"/>
+		</property>
+		<property name="bnumber" type="java.lang.Integer">
+			<column name="bnumber" length="10"/>
+		</property>
+    	<!-- 配置一对多 -->
+    	<set name="bookSet" table="categroy_book" lazy="false" inverse="false">
+    		<key column="cid"/>
+    		<many-to-many class="com.entity.Book" column="bid"/>
+    	</set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.entity.SellCensus" table="sellcensus">
+    	<id name="scid" column="scid" type="java.lang.Integer">
+    		<generator class="increment"/><!-- 自动增长，在最大值上加1 --></id>
+    	<property name="purchaser_id" type="java.lang.Integer">
+    		<column name="purchaser_id" length="20" not-null="true"/>
+    	</property>
+    	<property name="purchaser" type="java.lang.String">
+    		<column name="purchaser" length="20"/>
+    	</property>
+    	<property name="sellBook_id" type="java.lang.Integer">
+    		<column name="sellBook_id" length="20" not-null="true"/>
+    	</property>
+    	<property name="sellBook" type="java.lang.String">
+    		<column name="sellBook" length="20"/>
+    	</property>
+    	<property name="sellTime" type="java.lang.String">
+    		<column name="sellTime" length="20"/>
+    	</property>
+    	<property name="price" type="double">
+    		<column name="price" length="10"/>
+    	</property>
+    	<property name="buyAmount" type="java.lang.Integer">
+    		<column name="buyAmount" length="20" not-null="true"/>
+    	</property>
+    </class>
+</hibernate-mapping>

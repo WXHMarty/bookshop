@@ -1,0 +1,51 @@
+* {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+	font-family:Î¢ÈíÑÅºÚ;
+	overflow:hidden;
+}
+body{
+	background-image:url('../images/admin/ain_back.jpg');
+	background-repeat: no-repeat;
+}
+#navi{
+	width:100%;
+	position:relative;
+	word-wrap:break-word;
+	border-bottom:1px solid #065FB9;
+	margin:0;
+	padding:0;
+	height:40px;
+	line-height:40px;
+	vertical-align:middle;
+    background-image: -moz-linear-gradient(top,#EBEBEB, #BFBFBF);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EBEBEB),color-stop(1, 
+#BFBFBF));
+}
+#tips{
+	margin-top:10px;
+	width:100%;
+	height:40px;
+}
+#mainContainer{
+	padding-left:10px;
+	padding-right:10px;
+	text-align:center;
+	width:98%;
+	font-size:12px;
+}
+#adm{float:left; padding-left:15px;}
+#aname{font-weight:bold;}
+#out{
+	float:right;
+	padding-right:10px;
+	font-weight: bold;
+}
+#mypass{
+	float:right;
+	padding-right:10px;
+	font-weight: bold;
+}

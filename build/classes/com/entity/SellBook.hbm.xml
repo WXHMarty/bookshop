@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.entity.SellBook" table="sellbook">
+    	<id name="sid" column="sid" type="java.lang.Integer">
+    		<generator class="increment"/><!-- 自动增长，在最大值上加1 --></id>
+    	<property name="bid" type="java.lang.Integer">
+    		<column name="bid" length="20" not-null="true"/>
+    	</property>
+    	<property name="sellbname" type="java.lang.String">
+    		<column name="sellbname" length="20"/>
+    	</property>
+    	<property name="price" type="double">
+    		<column name="price" length="10"/>
+    	</property>
+    	<property name="sellAmount" type="java.lang.Integer">
+    		<column name="sellAmount" length="20" not-null="true"/>
+    	</property>
+    	<property name="allprice" type="double">
+    		<column name="allprice" length="20"/>
+    	</property>
+    </class>
+</hibernate-mapping>

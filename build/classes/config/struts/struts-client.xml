@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="user" namespace="/user" extends="bookshop-default">
+		<action name="*_*" class="com.action.user.{1}Action" method="{2}">
+			<result name="login_form">/WEB-INF/jsp/user/login_form.jsp</result>
+			<result name="register_form">/WEB-INF/jsp/user/register_form.jsp</result>
+			<result name="success">/WEB-INF/jsp/user/register_ok.jsp</result>
+			<result name="to_main" type="redirectAction">
+				<param name="namespace">/book</param>
+				<param name="actionName">Style_execute</param></result>
+			<result name="to_valiCode" type="chain">
+				<param name="namespace">/user</param>
+				<param name="actionName">Validate_valiCheckCode</param></result>
+			<result name="to_userRegist" type="chain">
+				<param name="namespace">/user</param>
+				<param name="actionName">UserRegister_userRegist</param></result>
+		</action>
+		
+		<!-- 输出验证码图片 -->
+		<action name="checkCode" class="com.action.CheckCodeAction">
+			<result name="success" type="stream"><param name="inputName">imageStream</param></result>
+		</action>
+	</package>
+	
+	<package name="book" namespace="/book" extends="bookshop-default">
+		<action name="main" class="com.action.book.StyleAction">
+			<result name="main">/WEB-INF/jsp/main/main.jsp</result>
+		</action>
+		<action name="*_*" class="com.action.book.{1}Action" method="{2}">
+			<result name="categroy">/WEB-INF/jsp/main/category.jsp</result>
+			<result name="recommend">/WEB-INF/jsp/main/recommend.jsp</result>
+			<result name="hot">/WEB-INF/jsp/main/hot.jsp</result>
+			<result name="new">/WEB-INF/jsp/main/new.jsp</result>
+			<result name="newhot">/WEB-INF/jsp/main/hotBoard.jsp</result>
+			<result name="list">/WEB-INF/jsp/main/book_list.jsp</result>
+			<result name="booksList">/WEB-INF/jsp/main/nOrHList.jsp</result>
+			<result name="nandH_List">/WEB-INF/jsp/main/nAndHList.jsp</result>
+			<result name="bookview">/WEB-INF/jsp/main/product.jsp</result>
+			<result name="main" type="redirectAction">
+				<param name="namespace">/book</param>
+				<param name="actionName">main</param></result>
+		</action>
+	</package>
+	
+	<package name="item" namespace="/item" extends="bookshop-default">
+		<action name="*_*" class="com.action.item.{1}Action" method="{2}">
+			<interceptor-ref name="loginStack"/>
+			<result name="to_cartList">/WEB-INF/jsp/cart/cart_list.jsp</result>
+			<result name="to_bookview">/WEB-INF/jsp/main/product.jsp</result>
+			<result name="success" type="chain">
+				<param name="namespace">/item</param>
+				<param name="actionName">ItemMove_execute</param></result>
+			<result name="login" type="redirectAction">
+				<param name="namespace">/user</param>
+				<param name="actionName">UserLogin_execute</param></result>
+		</action>
+		
+		<action name="payment" class="com.action.item.ItemMoveAction" method="infoItem">
+			<interceptor-ref name="payStack"/>
+			<result name="to_info">/WEB-INF/jsp/cart/item_info.jsp</result>
+			<result name="fail" type="redirectAction">
+				<param name="namespace">/book</param>
+				<param name="actionName">main</param></result>
+		</action>
+	</package>
+	
+	<package name="order" namespace="/order" extends="bookshop-default">
+		<action name="*_*" class="com.action.orders.{1}Action" method="{2}">
+			<interceptor-ref name="payStack"/>
+			<result name="success">/WEB-INF/jsp/order/order_ok.jsp</result>
+			<result name="to_address">/WEB-INF/jsp/order/address_form.jsp</result>
+			<result name="login" type="redirectAction">
+				<param name="namespace">/user</param>
+				<param name="actionName">login_form</param></result>
+			<result name="fail" type="redirectAction">
+				<param name="namespace">/book</param>
+				<param name="actionName">Style_execute</param></result>
+		</action>
+	</package>
+
+</struts>

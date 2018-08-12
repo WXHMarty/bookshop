@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.entity.Item" table="item">
+    	<id name="itid" column="itid" type="java.lang.Integer">
+    		<generator class="increment"/>
+    	</id>
+    	<property name="itname" type="java.lang.String">
+    		<column name="itname" length="100"/>
+    	</property>
+    	<property name="itpicture" type="java.lang.String">
+    		<column name="itpicture" length="50"/>
+    	</property>
+    	<property name="price" type="double">
+    		<column name="price"/>
+    	</property>
+    	<property name="order_num" type="java.lang.Integer">
+    		<column name="order_num" length="10" not-null="true"/>
+    	</property>
+    	<property name="amount" type="double">
+    		<column name="amount" not-null="true"/>
+    	</property>
+    	<property name="bid" type="java.lang.Integer">
+    		<column name="bid" length="20" not-null="true"/>
+    	</property>
+    	<many-to-one name="user" class="com.entity.User">
+    		<column name="uid" not-null="true"/>
+    	</many-to-one>
+    </class>
+</hibernate-mapping>

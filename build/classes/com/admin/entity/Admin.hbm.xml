@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.admin.entity.Admin" table="admin">
+    	<id name="id" column="id" type="java.lang.Integer">
+    		<generator class="increment"/><!-- 自动增长，在最大值上加1 -->
+    	</id>
+    	<property name="name" type="java.lang.String">
+    		<column name="name" length="20" not-null="true"/>
+    	</property>
+    	<property name="password" type="java.lang.String">
+    		<column name="password" length="50" not-null="true"/>
+    	</property>
+    </class>
+</hibernate-mapping>

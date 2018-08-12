@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.entity.ItProd" table="itprod">
+    	<id name="ipid" column="ipid" type="java.lang.Integer">
+    		<generator class="increment"/>
+    	</id>
+    	<property name="proname" type="java.lang.String">
+    		<column name="proname" length="20" not-null="true"/>
+    	</property>
+    	<property name="pro_num" type="java.lang.Integer">
+    		<column name="pro_num" length="20" not-null="true"/>
+    	</property>
+    </class>
+</hibernate-mapping>

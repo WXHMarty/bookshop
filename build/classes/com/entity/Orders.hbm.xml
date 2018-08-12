@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.entity.Orders" table="orders">
+    	<id name="oid" column="oid" type="java.lang.Integer">
+    		<generator class="increment"/>
+    	</id>
+    	<property name="ord_num" type="long">
+    		<column name="ord_num" length="20" not-null="true"/>
+    	</property>
+    	<property name="order_time" type="java.lang.String">
+    		<column name="order_time" length="20" not-null="true"/>
+    	</property>
+		<property name="total_price" type="double">
+    		<column name="total_price" not-null="true"/>
+    	</property>
+    	<property name="receive_name" type="java.lang.String">
+    		<column name="receive_name" length="100"/>
+    	</property>
+    	<property name="address" type="java.lang.String">
+    		<column name="address" length="200"/>
+    	</property>
+    	<property name="zipCode" type="java.lang.String">
+    		<column name="zipCode" length="8"/>
+    	</property>
+    	<property name="mobile" type="java.lang.String">
+    		<column name="mobile" length="100"/>
+    	</property>
+    	<property name="phone" type="java.lang.String">
+    		<column name="phone" length="100"/>
+    	</property>
+    	<many-to-one name="user" class="com.entity.User">
+    		<column name="uid" not-null="true"/>
+    	</many-to-one>
+    	<set name="ordits" table="itprod" inverse="false" lazy="false" cascade="all">
+    		<key column="oid"/>
+    		<one-to-many class="com.entity.ItProd"/>
+    	</set>
+    </class>
+</hibernate-mapping>

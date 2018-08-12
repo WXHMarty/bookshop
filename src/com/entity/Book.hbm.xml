@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.entity.Book" table="book">
+    	<id name="bid" column="bid" type="java.lang.Integer">
+    		<generator class="increment"/><!-- 自动增长，在最大值上加1 -->
+    	</id>
+    	<property name="bname" type="java.lang.String">
+    		<column name="bname" length="50" not-null="true"/>
+    	</property>
+    	<property name="author" type="java.lang.String">
+    		<column name="author" length="200"/>
+    	</property>
+    	<property name="picture" type="java.lang.String">
+    		<column name="picture" length="50"/>
+    	</property>
+    	<property name="publishing" type="java.lang.String">
+    		<column name="publishing" length="200"/>
+    	</property>
+    	<property name="publish_time" type="java.lang.String">
+    		<column name="publish_time" length="20"/>
+    	</property>
+    	<property name="word_number" type="java.lang.String">
+    		<column name="word_number" length="15" not-null="true"/>
+    	</property>
+    	<property name="which_edtion" type="java.lang.String">
+    		<column name="which_edtion" length="15" not-null="true"/>
+    	</property>
+    	<property name="total_page" type="java.lang.String">
+    		<column name="total_page" length="15" not-null="true"/>
+    	</property>
+    	<property name="print_time" type="java.lang.String">
+    		<column name="print_time" length="20" not-null="true"/>
+    	</property>
+    	<property name="print_number" type="java.lang.String">
+    		<column name="print_number" length="15" not-null="true"/>
+    	</property>
+    	<property name="description" type="java.lang.String">
+    		<column name="description"/>
+    	</property>
+    	<property name="author_summary" type="java.lang.String">
+    		<column name="author_summary"/>
+    	</property>
+    	<property name="price" type="double">
+    		<column name="price"/>
+    	</property>
+    	<property name="amount" type="java.lang.Integer">
+    		<column name="amount" length="50"/>
+    	</property>
+    	<set name="categroySet" table="categroy_book" lazy="false" cascade="save-update">
+    		<key column="bid"/>
+    		<many-to-many class="com.entity.Categroy" column="cid"/>
+    	</set>
+    </class>
+</hibernate-mapping>

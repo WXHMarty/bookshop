@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<package name="admin" namespace="/admin" extends="bookshop-default">
+		<!-- 管理员登陆页面 -->
+		<action name="admin" class="com.admin.action.AdminAction">
+			<result name="login">/WEB-INF/jsp/admin/admin_login.jsp</result>
+		</action>
+		
+		<!-- 进行登录操作 -->
+		<action name="login" class="com.admin.action.AdminAction" method="adminLogin">
+			<result name="main" type="redirectAction">
+				<param name="namespacec">/admin</param>
+				<param name="actionName">Admin_toMain</param>
+			</result>
+			<result name="admin_login">/WEB-INF/jsp/admin/admin_login.jsp</result>
+		</action>
+		
+		<!-- 其他操作 -->
+		<action name="*_*" class="com.admin.action.{1}Action" method="{2}">
+			<interceptor-ref name="admloginStack"/>
+			<result name="main">/WEB-INF/jsp/admin/admin_main.jsp</result>
+			<result name="to_revpass">/WEB-INF/jsp/admin/rev_pass.jsp</result>
+			<result name="to_add">/WEB-INF/jsp/admin/add_adm.jsp</result>
+			<result name="addAdm_ok">/WEB-INF/jsp/admin/addAdm_ok.jsp</result>
+			<result name="to_list">/WEB-INF/jsp/admin/item_list.jsp</result>
+			<result name="to_item">/WEB-INF/jsp/admin/item_detail.jsp</result>
+			<result name="revPass_ok">/WEB-INF/jsp/admin/revPass_ok.jsp</result>
+			<result name="do_ok">/WEB-INF/jsp/admin/detItem_ok.jsp</result>
+			<result name="to_addPro">/WEB-INF/jsp/admin/add_product.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/addprod_ok.jsp</result>
+			<result name="to_prodList">/WEB-INF/jsp/admin/product_list.jsp</result>
+			<result name="delete_ok">/WEB-INF/jsp/admin/delProd_ok.jsp</result>
+			<result name="to_prodDetail">/WEB-INF/jsp/admin/product_detail.jsp</result>
+			<result name="to_revProd">/WEB-INF/jsp/admin/rev_product.jsp</result>
+			<result name="to_usList">/WEB-INF/jsp/admin/user_list.jsp</result>
+			<result name="to_usDetail">/WEB-INF/jsp/admin/user_detail.jsp</result>
+			<result name="to_sellBList">/WEB-INF/jsp/admin/sellbook_list.jsp</result>
+			<result name="to_sellB">/WEB-INF/jsp/admin/sellbook.jsp</result>
+			<result name="revprod_ok">/WEB-INF/jsp/admin/revProd_ok.jsp</result>
+			<result name="to_main" type="redirectAction">
+				<param name="namespacec">/admin</param>
+				<param name="actionName">Admin_toMain</param></result>
+			<result name="login" type="redirectAction">
+				<param name="namespacec">/admin</param>
+				<param name="actionName">admin</param></result>
+		</action>
+	</package>
+</struts>
